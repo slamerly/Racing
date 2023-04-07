@@ -6,6 +6,7 @@ class Grid :
 {
 public:
     Grid();
+    Grid(std::vector<std::vector<int>>* circuit);
 
     void processClick(int x, int y);
     class Tile& getStartTile();
@@ -19,12 +20,12 @@ private:
     // 2D vector of tiles in grid
     std::vector<std::vector<class Tile*>> tiles;
 
-    const size_t NB_ROWS = 7;
-    const size_t NB_COLS = 16;
+    const size_t NB_ROWS = 15;
+    const size_t NB_COLS = 20; // 16
 
     // Start y position of top left corner
-    const float START_Y = 0;
+    const float START_Y = 20;
 
-    const float TILESIZE = 64.0f;
+    const float TILESIZE = 40.0f;
 };
 

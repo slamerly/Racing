@@ -30,6 +30,10 @@ private:
 	float maxUpSpeed;
 	float maxAngularSpeed;
 
+	float forwardSpeed;
+	float upSpeed;
+	float angularSpeed;
+
 	int forwardKey;
 	int backKey;
 	int leftKey;

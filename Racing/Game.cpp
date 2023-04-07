@@ -4,7 +4,7 @@
 #include "AnimSpriteComponent.h"
 #include "BackgroundSpriteComponent.h"
 #include <iostream>
-#include "Border.h"
+#include "Maths.h"
 
 bool Game::initialize()
 {
@@ -19,11 +19,36 @@ void Game::load()
     Assets::loadTexture(renderer, "Res\\building.png", "Building");
     Assets::loadTexture(renderer, "Res\\tree.png", "Tree");
     Assets::loadTexture(renderer, "Res\\border.png", "Border");
+    Assets::loadTexture(renderer, "Res\\moto2.png", "Moto");
 
     srand(time(nullptr));
 
-    grid = new Grid();
+    vector<vector<int>> circuit
+    {   { 2, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2 },
+        { 3, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1 },
+        { 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1 },
+        { 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 },
+        { 1, 0, 0, 0, 1, 1, 1, 1, 2, 2, 3, 1, 1, 1, 1, 1, 1, 0, 0, 1 },
+        { 1, 0, 0, 1, 1, 0, 0, 1, 1, 3, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1 },
+        { 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
+        { 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1 },
+        { 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1 },
+        { 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1 },
+        { 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1 },
+        { 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
+        { 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1 },
+        { 1, 0, 0, 0, 0, 0, 1, 2, 1, 1, 1, 1, 1, 3, 1, 0, 0, 0, 1, 1 },
+        { 1, 1, 1, 1, 1, 1, 1, 3, 3, 2, 3, 2, 2, 2, 1, 1, 1, 1, 1, 3 }
+    };
 
+    //grid = new Grid();
+    grid = new Grid(&circuit);
+
+    moto = new Moto();
+    moto->setPosition({ 80, 400 });
+    moto->setRotation(Maths::toRadians(90));
+    //moto->setRotation(1.57f);    
+    
     score = 8 * 6;
 }
 

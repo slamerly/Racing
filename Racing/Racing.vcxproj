@@ -34,6 +34,7 @@
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Moto.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Random.cpp" />
@@ -63,6 +64,7 @@
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Maths.h" />
+    <ClInclude Include="Moto.h" />
     <ClInclude Include="MoveComponent.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="Random.h" />

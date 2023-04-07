@@ -8,6 +8,7 @@
 #include "Paddle.h"
 #include "Brick.h"
 #include "Grid.h"
+#include "Moto.h"
 
 using std::vector;
 
@@ -45,6 +46,7 @@ public:
 	Renderer& getRenderer() { return renderer; }
 
 	// Game specific
+	Moto* getMoto() { return moto; }
 	int getScore() { return score; }
 	bool getPartyIsEnd() { return partyIsEnd; }
 
@@ -69,6 +71,7 @@ private:
 
 	// Game specific
 	Grid* grid;
+	Moto* moto;
 	int score;
 	bool partyIsEnd = false;
 };

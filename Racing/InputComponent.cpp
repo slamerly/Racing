@@ -1,5 +1,7 @@
 #include "InputComponent.h"
 #include <SDL_scancode.h>
+#include <iostream>
+#include "Maths.h"
 
 InputComponent::InputComponent(Actor* ownerP) :
 	MoveComponent(ownerP),
@@ -12,37 +14,57 @@ InputComponent::InputComponent(Actor* ownerP) :
 	upKey(SDL_SCANCODE_UP),
 	downKey(SDL_SCANCODE_DOWN),
 	clockwiseKey(SDL_SCANCODE_D),
-	counterClockwiseKey(SDL_SCANCODE_A)
+	counterClockwiseKey(SDL_SCANCODE_A),
+	forwardSpeed(0.0f),
+	upSpeed(0.0f),
+	angularSpeed(0.0f)
 {
 }
 
 void InputComponent::processInput(const Uint8* keyState)
 {
-	float forwardSpeed = 0.0f;
-	//if (keyState[forwardKey])
-	if (keyState[rightKey])
+	if (keyState[upKey])
 	{
-		forwardSpeed += maxForwardSpeed;
+		//forwardSpeed += maxForwardSpeed;
+		if (forwardSpeed < maxForwardSpeed)
+			forwardSpeed += 1.0f;
 	}
-	//if (keyState[backKey])
-	if (keyState[leftKey])
+	else if (keyState[downKey])
 	{
-		forwardSpeed -= maxForwardSpeed;
+		if(forwardSpeed > (maxForwardSpeed / 2) * -1)
+		forwardSpeed -= 1.0f;
 	}
+	else
+	{
+		if(forwardSpeed > 0)
+			forwardSpeed -= 2.0f;
+		if (forwardSpeed < 0)
+			forwardSpeed += 2.0f;
+	}
+
+	//std::cout << forwardSpeed << std::endl;
 	setForwardSpeed(forwardSpeed);
 
-	/*
-	float angularSpeed = 0.0f;
-	if (keyState[clockwiseKey])
+	
+	if (keyState[rightKey])
 	{
-		angularSpeed -= maxAngularSpeed;
+		if(angularSpeed > -maxAngularSpeed)
+			angularSpeed -= Maths::toRadians(1.0f);
 	}
-	if (keyState[counterClockwiseKey])
+	else if (keyState[leftKey])
 	{
-		angularSpeed += maxAngularSpeed;
+		if (angularSpeed < maxAngularSpeed)
+			angularSpeed += Maths::toRadians(1.0f);
+	}
+	else
+	{
+		if (angularSpeed > 0)
+			angularSpeed -= Maths::toRadians(2.0f);
+		if (angularSpeed < 0)
+			angularSpeed += Maths::toRadians(2.0f);
 	}
 	setAngularSpeed(angularSpeed);
-	*/
+	
 	/*
 	float upSpeed = 0.0f;
 	if (keyState[upKey])

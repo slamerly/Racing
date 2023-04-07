@@ -21,19 +21,25 @@ void Tile::toggleSelect()
 
 void Tile::updateTexture()
 {
-	if(sprite == nullptr)
-		sprite = new SpriteComponent(this, Assets::getTexture("Border"));
-
 	switch (tileState)
 	{
 	case Tile::TileState::Border:
-		sprite->setTexture(Assets::getTexture("Border"));
+		if (sprite == nullptr)
+			sprite = new SpriteComponent(this, Assets::getTexture("Border"));
+		else
+			sprite->setTexture(Assets::getTexture("Border"));
 		break;
 	case Tile::TileState::Building:
-		sprite->setTexture(Assets::getTexture("Building"));
+		if (sprite == nullptr)
+			sprite = new SpriteComponent(this, Assets::getTexture("Building"));
+		else
+			sprite->setTexture(Assets::getTexture("Building"));
 		break;
 	case Tile::TileState::Tree:
-		sprite->setTexture(Assets::getTexture("Tree"));
+		if (sprite == nullptr)
+			sprite = new SpriteComponent(this, Assets::getTexture("Tree"));
+		else
+			sprite->setTexture(Assets::getTexture("Tree"));
 		break;
 	case Tile::TileState::Default:
 	default:
