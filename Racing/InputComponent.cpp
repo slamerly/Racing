@@ -31,7 +31,11 @@ void InputComponent::processInput(const Uint8* keyState)
 	}
 	else if (keyState[downKey])
 	{
-		if(forwardSpeed > (maxForwardSpeed / 2) * -1)
+		if (forwardSpeed > 0)
+		{ 
+			forwardSpeed -= 3.0f;		
+		}
+		else if (forwardSpeed > (maxForwardSpeed / 2) * -1)
 		forwardSpeed -= 1.0f;
 	}
 	else
@@ -48,20 +52,24 @@ void InputComponent::processInput(const Uint8* keyState)
 	
 	if (keyState[rightKey])
 	{
-		if(angularSpeed > -maxAngularSpeed)
-			angularSpeed -= Maths::toRadians(1.0f);
+		if (angularSpeed > -maxAngularSpeed)
+		{
+			angularSpeed -= Maths::toRadians(5.0f);
+		}
 	}
 	else if (keyState[leftKey])
 	{
 		if (angularSpeed < maxAngularSpeed)
-			angularSpeed += Maths::toRadians(1.0f);
+		{
+			angularSpeed += Maths::toRadians(5.0f);
+		}
 	}
 	else
 	{
 		if (angularSpeed > 0)
-			angularSpeed -= Maths::toRadians(2.0f);
+			angularSpeed -= Maths::toRadians(10.0f);
 		if (angularSpeed < 0)
-			angularSpeed += Maths::toRadians(2.0f);
+			angularSpeed += Maths::toRadians(10.0f);
 	}
 	setAngularSpeed(angularSpeed);
 	

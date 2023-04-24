@@ -15,7 +15,7 @@ Moto::Moto() :
 
 	ic->setMaxForwardSpeed(150);
 	//ic->setMaxAngularSpeed(Maths::twoPi);
-	ic->setMaxAngularSpeed(Maths::toRadians(45.0f));
+	ic->setMaxAngularSpeed(Maths::toRadians(65.0f));
 
 	collision = new RectangleCollisionComponent(this);
 	collision->setWidth(40.0f);

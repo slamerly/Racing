@@ -28,9 +28,13 @@ void MoveComponent::setAngularSpeed(float angularSpeedP)
 
 void MoveComponent::update(float dt)
 {
-	if (!Maths::nearZero(angularSpeed))
+	if (!Maths::nearZero(angularSpeed) && (forwardSpeed > 25.0f || forwardSpeed < -25.0f))
 	{
 		float newRotation = owner.getRotation() + angularSpeed * dt;
+		if (forwardSpeed < 0)
+		{
+			newRotation = owner.getRotation() + angularSpeed * dt * -1;
+		}
 		owner.setRotation(newRotation);
 	}
 	if (!Maths::nearZero(forwardSpeed))
