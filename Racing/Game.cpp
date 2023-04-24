@@ -19,7 +19,9 @@ void Game::load()
     Assets::loadTexture(renderer, "Res\\building.png", "Building");
     Assets::loadTexture(renderer, "Res\\tree.png", "Tree");
     Assets::loadTexture(renderer, "Res\\border.png", "Border");
-    Assets::loadTexture(renderer, "Res\\moto2.png", "Moto");
+    Assets::loadTexture(renderer, "Res\\endLine.png", "EndLine");
+    Assets::loadTexture(renderer, "Res\\moto.png", "Moto");
+    Assets::loadTexture(renderer, "Res\\moto2.png", "Moto2");
 
     srand(time(nullptr));
 
@@ -36,20 +38,15 @@ void Game::load()
         { 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1 },
         { 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1 },
         { 1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1 },
-        { 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1 },
-        { 1, 0, 0, 0, 0, 0, 1, 2, 1, 1, 1, 1, 1, 3, 1, 0, 0, 0, 1, 1 },
+        { 4, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1 },
+        { 4, 0, 0, 0, 0, 0, 1, 2, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1 },
         { 1, 1, 1, 1, 1, 1, 1, 3, 3, 2, 3, 2, 2, 2, 1, 1, 1, 1, 1, 3 }
     };
 
     //grid = new Grid();
     grid = new Grid(&circuit);
 
-    moto = new Moto();
-    moto->setPosition({ 80, 400 });
-    moto->setRotation(Maths::toRadians(90));
-    //moto->setRotation(1.57f);    
-    
-    score = 8 * 6;
+    motoInit();
 }
 
 void Game::loop()
@@ -116,15 +113,9 @@ void Game::removeActor(Actor* actor)
     }
 }
 
-void Game::setScore(int scoreP)
-{
-    score = scoreP;
-}
-
 void Game::endGame()
 {
     partyIsEnd = true;
-    //ball->setBallLock(true);
     std::cout << "Press ENTER to reset" << std::endl << std::endl;
 }
 
@@ -151,18 +142,9 @@ void Game::processInput()
 
     if (keyboardState[SDL_SCANCODE_RETURN] && partyIsEnd)
     {
-        std::cout << "rest" << std::endl;
+        //std::cout << "rest" << std::endl;
         newParty();
     }
-
-    // Game newParty
-    /*
-    if (keyboardState[SDL_SCANCODE_SPACE] && getBall()->getBallLock())
-    {
-        std::cout << "space" << std::endl;
-        getBall()->setBallLock(false);
-    }
-    */
 
     // Actor input
     isUpdatingActors = true;
@@ -215,28 +197,34 @@ void Game::render()
 
 void Game::newParty()
 {
-    /*
-    score = 6 * 8;
     partyIsEnd = false;
 
-    for (auto vectBrick : bricks)
+    for (size_t i = 0; i < motos.size(); i++)
     {
-        for (auto brick : vectBrick)
-        {
-            if (brick)
-            {
-                brick->~Brick();
-            }
-        }
-        vectBrick.clear();
+        delete motos[i];
     }
-    bricks.clear();
+    //delete moto;
+    motos.clear();
+    
+    motoInit();
+}
 
-    ball->getMove()->setUpSpeed(ball->getMove()->getUpSpeed() * -1);
-    ball->setlife(3);
+void Game::motoInit()
+{
+    Moto* moto = new Moto();
+    moto->setPosition({ 100, 400 });
+    moto->setRotation(Maths::toRadians(90));
 
-    loadBricks();
+    motos.push_back(moto);
 
-    paddle->setPosition({ WINDOW_WIDTH / 2, WINDOW_HEIGHT - 50 });
-    */
+    Moto* moto2 = new Moto();
+    moto2->getSpriteComponent().setTexture(Assets::getTexture("Moto2"));
+    moto2->getInputComponent().setUpKey(SDL_SCANCODE_W);
+    moto2->getInputComponent().setDownKey(SDL_SCANCODE_S);
+    moto2->getInputComponent().setLeftKey(SDL_SCANCODE_A);
+    moto2->getInputComponent().setRightKey(SDL_SCANCODE_D);
+    moto2->setPosition({ 60, 400 });
+    moto2->setRotation(Maths::toRadians(90));
+
+    motos.push_back(moto2);
 }

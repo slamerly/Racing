@@ -17,7 +17,8 @@ InputComponent::InputComponent(Actor* ownerP) :
 	counterClockwiseKey(SDL_SCANCODE_A),
 	forwardSpeed(0.0f),
 	upSpeed(0.0f),
-	angularSpeed(0.0f)
+	angularSpeed(0.0f),
+	crash(false)
 {
 }
 
@@ -47,8 +48,18 @@ void InputComponent::processInput(const Uint8* keyState)
 	}
 
 	//std::cout << forwardSpeed << std::endl;
-	setForwardSpeed(forwardSpeed);
-
+	if(!crash)
+		setForwardSpeed(forwardSpeed);
+	else
+	{
+		setForwardSpeed((forwardSpeed / 2) * -1);
+		if (forwardSpeed > 0)
+			forwardSpeed -= 2.0f;
+		if (forwardSpeed < 0)
+			forwardSpeed += 2.0f;
+		if (forwardSpeed == 0)
+			crash = false;
+	}
 	
 	if (keyState[rightKey])
 	{
@@ -140,4 +151,9 @@ void InputComponent::setClockwiseKey(int key)
 void InputComponent::setCounterClockwiseKey(int key)
 {
 	counterClockwiseKey = key;
+}
+
+void InputComponent::setCrash(bool crashP)
+{
+	crash = crashP;
 }

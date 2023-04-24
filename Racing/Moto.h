@@ -1,18 +1,24 @@
 #pragma once
 #include "Actor.h"
-#include "RectangleCollisionComponent.h"
+#include "CircleCollisionComponent.h"
+#include "InputComponent.h"
+#include "SpriteComponent.h"
 
 class Moto :
     public Actor
 {
 public:
     Moto();
-
+    ~Moto();
     void updateActor(float dt) override;
 
-    RectangleCollisionComponent& getCollision() { return *collision; }
+    CircleCollisionComponent& getCollision() { return *collision; }
+    InputComponent& getInputComponent() { return *inputComp; }
+    SpriteComponent& getSpriteComponent() { return *spriteComp; }
 
 private:
-    RectangleCollisionComponent* collision;
+    CircleCollisionComponent* collision;
+    InputComponent* inputComp;
+    SpriteComponent* spriteComp;
 };
 

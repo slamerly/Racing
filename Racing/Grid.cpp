@@ -56,6 +56,8 @@ Grid::Grid(std::vector<std::vector<int>>* circuit) :
 			case 3:
 				tiles[i][j]->setTileState(Tile::TileState::Building);
 				break;
+			case 4:
+				tiles[i][j]->setTileState(Tile::TileState::EndLine);
 			}
 		}
 	}

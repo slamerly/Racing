@@ -46,12 +46,6 @@
     <ClCompile Include="Component.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Ball.cpp">
-      <Filter>GameSpecific</Filter>
-    </ClCompile>
-    <ClCompile Include="Paddle.cpp">
-      <Filter>GameSpecific</Filter>
-    </ClCompile>
     <ClCompile Include="Assets.cpp">
       <Filter>Base</Filter>
     </ClCompile>
@@ -88,15 +82,16 @@
     <ClCompile Include="Font.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>GameSpecific</Filter>
-    </ClCompile>
     <ClCompile Include="Border.cpp">
       <Filter>GameSpecific</Filter>
     </ClCompile>
-    <ClCompile Include="Grid.cpp" />
-    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Moto.cpp">
+      <Filter>GameSpecific</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>GameSpecific</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
       <Filter>GameSpecific</Filter>
     </ClCompile>
   </ItemGroup>
@@ -127,12 +122,6 @@
     </ClInclude>
     <ClInclude Include="Component.h">
       <Filter>Components</Filter>
-    </ClInclude>
-    <ClInclude Include="Ball.h">
-      <Filter>GameSpecific</Filter>
-    </ClInclude>
-    <ClInclude Include="Paddle.h">
-      <Filter>GameSpecific</Filter>
     </ClInclude>
     <ClInclude Include="Assets.h">
       <Filter>Base</Filter>
@@ -170,15 +159,16 @@
     <ClInclude Include="Font.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>GameSpecific</Filter>
-    </ClInclude>
     <ClInclude Include="Border.h">
       <Filter>GameSpecific</Filter>
     </ClInclude>
-    <ClInclude Include="Grid.h" />
-    <ClInclude Include="Tile.h" />
     <ClInclude Include="Moto.h">
+      <Filter>GameSpecific</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>GameSpecific</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
       <Filter>GameSpecific</Filter>
     </ClInclude>
   </ItemGroup>

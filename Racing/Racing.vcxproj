@@ -23,9 +23,7 @@
     <ClCompile Include="AnimSpriteComponent.cpp" />
     <ClCompile Include="Assets.cpp" />
     <ClCompile Include="BackgroundSpriteComponent.cpp" />
-    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Border.cpp" />
-    <ClCompile Include="Brick.cpp" />
     <ClCompile Include="CircleCollisionComponent.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Font.cpp" />
@@ -36,7 +34,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Moto.cpp" />
     <ClCompile Include="MoveComponent.cpp" />
-    <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="RectangleCollisionComponent.cpp" />
@@ -53,9 +50,7 @@
     <ClInclude Include="AnimSpriteComponent.h" />
     <ClInclude Include="Assets.h" />
     <ClInclude Include="BackgroundSpriteComponent.h" />
-    <ClInclude Include="Ball.h" />
     <ClInclude Include="Border.h" />
-    <ClInclude Include="Brick.h" />
     <ClInclude Include="CircleCollisionComponent.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Font.h" />
@@ -66,7 +61,6 @@
     <ClInclude Include="Maths.h" />
     <ClInclude Include="Moto.h" />
     <ClInclude Include="MoveComponent.h" />
-    <ClInclude Include="Paddle.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="RectangleCollisionComponent.h" />

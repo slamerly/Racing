@@ -25,6 +25,8 @@ public:
 	void setClockwiseKey(int key);
 	void setCounterClockwiseKey(int key);
 
+	void setCrash(bool crashP);
+
 private:
 	float maxForwardSpeed;
 	float maxUpSpeed;
@@ -42,4 +44,6 @@ private:
 	int downKey;
 	int clockwiseKey;
 	int counterClockwiseKey;
+
+	bool crash;
 };

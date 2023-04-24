@@ -4,9 +4,6 @@
 #include "Renderer.h"
 #include "Actor.h"
 #include "SpriteComponent.h"
-#include "Ball.h"
-#include "Paddle.h"
-#include "Brick.h"
 #include "Grid.h"
 #include "Moto.h"
 
@@ -46,8 +43,7 @@ public:
 	Renderer& getRenderer() { return renderer; }
 
 	// Game specific
-	Moto* getMoto() { return moto; }
-	int getScore() { return score; }
+	vector<Moto*> getMotos() { return motos; }
 	bool getPartyIsEnd() { return partyIsEnd; }
 
 	void setScore(int scoreP);
@@ -60,6 +56,7 @@ private:
 
 	// Game specific
 	void newParty();
+	void motoInit();
 
 	Window window {};
 	Renderer renderer;
@@ -71,8 +68,7 @@ private:
 
 	// Game specific
 	Grid* grid;
-	Moto* moto;
-	int score;
+	vector<Moto*> motos;
 	bool partyIsEnd = false;
 };
 

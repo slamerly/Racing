@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include <vector>
 #include "SpriteComponent.h"
+#include "RectangleCollisionComponent.h"
 
 class Tile :
     public Actor
@@ -13,10 +14,13 @@ public:
         Default,
         Border,
         Building,
-        Tree
+        Tree,
+        EndLine
     };
 
     Tile();
+
+    void updateActor(float dt) override;
 
     TileState getTileState() const { return tileState; }
     void setTileState(TileState tileStateP);
@@ -24,9 +28,11 @@ public:
     void toggleSelect();
 
 private:
-    void updateTexture();
+    RectangleCollisionComponent* collision;
     SpriteComponent* sprite;
     TileState tileState;
     bool isSelected;
+
+    void updateTexture();
 };
 
